@@ -1,5 +1,4 @@
 %YAML:1.0
-
 #common parameters
 #support: 1 imu 1 cam; 1 imu 2 cam: 2 cam; 
 imu: 1
@@ -15,7 +14,7 @@ cam1_calib: "cam1_pinhole.yaml"
 image_width: 640
 image_height: 480
 
-
+   
 # Extrinsic parameter between IMU and Camera.
 estimate_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
                         # 1  Have an initial guess about extrinsic parameters. We will optimize around your initial guess.
@@ -24,22 +23,23 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [0.00614414, 0.00077897, 0.99998082, 0.00553313,
-          -0.99991665, -0.01135064, 0.00615259, 0.0000352,
-          0.01135521, -0.99993528, 0.00070916, 0.00126564,
+   data: [-0.000908, 0.00499149, 0.99998713, 0.00840741,
+          -0.99999196, -0.00391068, -0.00088849, 0.00205487,
+          0.00390619, -0.9999799, 0.004995, 0.00168026,
           0.0, 0.0, 0.0, 1.0]
 
 body_T_cam1: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [0.01431155, 0.0021834, 0.9998952, 0.00660793,
-          -0.99988213, -0.00552821, 0.01432343, -0.07505595,
-          0.0055589, -0.99998234, 0.00210402, 0.00168312,
+   data: [0.00728425, 0.00643685, 0.99995275, 0.00895445,
+          -0.99997175, 0.00190191, 0.00727215, -0.07304301,
+          -0.00185502, -0.99997747, 0.00645052, 0.00154094,
           0.0, 0.0, 0.0, 1.0]
 
 #Multiple thread support
 multiple_thread: 1
+
 use_gpu: 1
 use_gpu_acc_flow: 0
 
@@ -65,7 +65,7 @@ g_norm: 9.80481417   # gravity magnitude
 
 #unsynchronization parameters
 estimate_td: 0                      # online estimate time offset between camera and imu
-td: -0.0011105766622156986          # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
+td: -0.0013565358836306082          # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
 
 #loop closure parameters
 load_previous_pose_graph: 0        # load and reuse previous pose graph; load from 'pose_graph_save_path'
